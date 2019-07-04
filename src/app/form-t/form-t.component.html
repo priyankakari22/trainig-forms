@@ -1,0 +1,126 @@
+
+<div class="a" style="text-align:center">
+        <h1>{{title}}</h1>
+        <form name="form" autocomplete="off" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm"
+         novalidate>
+         <table align="center">
+          <tr><td>First Name <input type="text"  placeholder="first name" class="form-control" 
+           name="fname" required  [(ngModel)]="data.firstName" #fname="ngModel">
+        <div *ngIf="fname.invalid && (fname.dirty || fname.touched)"
+            class="alert alert-danger"> 
+            <div *ngIf="fname.errors.required">
+             <p> Name is required.</p>
+            </div>
+        </div></td>
+      
+      
+      
+        <td>Last Name: <input type="text"  placeholder="Last Name" class="form-control" 
+         name="lname" id="lname" required  [(ngModel)]="data.lastName" #lname="ngModel"
+          pattern="[A-Za-z]{1,15}"><br><br>
+          <div *ngIf="lname.invalid && (lname.dirty || lname.touched)"><br>
+          <div *ngIf="lname.errors.required">
+              <p>Name is required.</p>
+            </div>
+            <div *ngIf="lname.errors.pattern">
+              <p>Last name should be in alphabets.</p>
+            </div>
+          </div></td></tr><br>
+      
+           <tr><td>Person Email: <input type="text"  placeholder="Email" class="form-control" 
+         name="p_email" id="p_email" (input) ="onchange($event.target.value)" required  [(ngModel)]="data.email" #p_email="ngModel" 
+         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+         <div *ngIf="p_email.invalid && (p_email.dirty || p_email.touched)">
+             <div *ngIf="p_email.errors.required">
+              <p>Personal Email is required.</p>
+            </div>
+            <div *ngIf="p_email.errors.pattern">
+             
+             <p>Invalid Email.</p>
+            </div>
+        </div> </td>
+      
+      
+         <td>Company Email: <input type="text"  placeholder="Email" class="form-control" 
+         name="c_email" id="c_email" (input)="onchange($event.target.value)" required   [(ngModel)]="data.Cmail"
+         #c_email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
+        match="data.email" not-match="false">
+        <div *ngIf="c_email.invalid && (c_email.dirty || c_email.touched)">
+            <div *ngIf="c_email.errors.required">
+              <p>Company Email is required.</p>
+            </div>
+            <div *ngIf="c_email.errors.pattern">
+             <p>Invalid Email.</p>
+            </div>
+            
+          </div>
+           <div *ngIf="er">
+            <p>Same E-mails should not be entered</p>
+          </div></td></tr><br> 
+      
+      
+         
+        <tr><td>Phone Number: <input type="number"  placeholder="Phone Number" class="form-control" 
+        name="num" id="num" (input)="onchange($event.target.value)" required  [(ngModel)]="data.number" #num="ngModel" pattern="[0-9]{10}" >
+       <div *ngIf="num.invalid && (num.dirty ||num.touched)">
+            
+           <div *ngIf="num.errors.required">
+             <p>phone Number is required.</p>
+           </div>
+           <div *ngIf="num.errors.pattern">
+            invalid..
+           </div>
+       </div></td>
+      
+      
+       <td>Date of Birth: <input type="date" name="dob"
+         class="form-control" required [(ngModel)]="data.date" #dob="ngModel">
+      <div *ngIf="dob.invalid && (dob.dirty || dob.touched)"
+      class="alert alert-danger">
+      <div *ngIf="dob.errors.required">
+        <p>Date of Birth is required.</p>
+      </div>
+      </div>
+      </td>
+       </tr>
+      
+      
+       <tr><input type="checkbox" name="check" value="I want to receive email about updates to website"
+           required [(ngModel)]="data.box" #check="ngModel" > I want to receive email about updates to website
+           <div  *ngIf="check.invalid && (check.dirty || check.touched)"
+            class="alert alert-danger">
+           <div *ngIf="check.errors.required">
+              <p>checkbox is required.</p>
+            </div>
+            </div></tr>
+      
+      
+       
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <button type="submit"   class="b" [disabled]="f.form.pristine || f.form.invalid">Register</button>
+      
+      
+      
+      </table>
+      </form>
+      
+      </div>
+      <table class="t">
+        <tr>
+          <th>Fast Name</th><th>Last Name</th><th>Date of Birth</th><th>Phone Number</th>
+          <th>Personal Mail</th><th>Company Mail</th>
+        </tr>
+      
+        <tr *ngFor="let i of array">
+          <td>{{i.firstName}}</td>
+          <td>{{i.lastName}}</td>
+          <td>{{i.date}}</td>
+          <td>{{i.number}}</td>
+          <td>{{i.email}}</td>
+          <td>{{i.Cmail}}</td>
+        </tr>
+        </table>
+      
+    
+    
+        
+      <router-outlet></router-outlet>

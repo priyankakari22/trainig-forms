@@ -1,0 +1,132 @@
+<p>form-r works!</p>
+<div class="a">
+    <form [formGroup]="employeeForm" autocomplete="off" (ngSubmit)="employeeForm.valid && onSubmit(f)" #f="ngForm"
+        novalidate>
+
+
+        <label>
+            Name:
+
+            <input type="text" id="name" formControlName="name" class="form-control" required>
+            <span *ngIf="employeeForm.get('name').errors &&
+                    (employeeForm.get('name').touched || employeeForm.get('name').dirty)">
+                <span *ngIf="employeeForm.get('name').errors.required"><br>
+                    <p>name required.</p>
+                </span>
+                <span *ngIf="employeeForm.get('name').errors.pattern"><br>
+                    <p>Name must be alphabets and less than 20 characters.</p>
+                </span>
+            </span>
+        </label><br><br>
+
+
+
+        <label>
+            Email:
+            <input type="text" id="email" formControlName="email">
+            <span *ngIf="employeeForm.get('email').errors &&
+                    (employeeForm.get('email').touched || employeeForm.get('email').dirty)">
+                <span *ngIf="employeeForm.get('email').errors.required"><br>
+                    <p>required...</p>
+                </span>
+                <span *ngIf="employeeForm.get('email').errors.pattern"><br>
+                    <p>Invalid email.</p>
+                </span>
+            </span>
+        </label><br><br>
+
+        <label>
+            Date Of Birth:
+            <input type="date" id="dob" formControlName="dob">
+            <span *ngIf="employeeForm.get('dob').errors && 
+                    (employeeForm.get('dob').touched || employeeForm.get('dob').dirty)">
+                <span *ngIf="employeeForm.get('dob').errors.required"><br>
+                    <p>required...</p>
+                </span>
+            </span>
+        </label><br><br>
+
+
+        <label>
+            Phone Number:
+            <input type="number" id="number" formControlName="number">
+            <span
+                *ngIf="employeeForm.get('number').errors && (employeeForm.get('number').touched || employeeForm.get('number').dirty)">
+                <span *ngIf="employeeForm.get('number').errors.required"><br>
+                    <p>required...</p>
+                </span>
+                <span *ngIf="employeeForm.get('number').errors.pattern"><br>
+                    <p>Correct your number.</p>
+                </span>
+            </span>
+        </label><br><br><br>
+
+        <label>
+            Company Email:
+            <input type="text" id="mail" formControlName="mail" (input)="mail1($event.target.value)">
+            <span *ngIf="employeeForm.get('mail').errors && (employeeForm.get('mail').touched
+                 || employeeForm.get('mail').dirty)">
+                <span *ngIf="employeeForm.get('mail').errors.required"><br>
+                    <p>required..</p>
+                </span>
+                <span *ngIf="employeeForm.get('mail').errors.pattern">
+                    <p>Invalid email.</p>
+                </span>
+
+            </span>
+            <div *ngIf="cmail">
+                <p>Both mails are should not be same</p>
+            </div>
+        </label>
+
+        <h3> Address</h3>
+        <div formGroupName="address">
+
+
+            <label>
+                D:No :
+                <input type="text" id="doorNum" formControlName="doorNum" (input)="onchange($event)">
+                <!-- <span *ngIf="address.get('doorNum').errors &&
+                    (address.get('doorNum').touched || address.get('doorNum').dirty)">
+                    <span *ngIf="address.get('doorNum').errors.required">
+                        required.
+                        </span></span> -->
+                <span *ngIf="doorerror"><br>
+                    <p>Required..</p>
+                </span>
+            </label><br><br>
+
+            <label>
+                Street :
+                <input type="text" id="street" formControlName="street" (input)="onchange1($event)">
+                <span *ngIf="streeterror"><br>
+                    <p>required...</p>
+                </span>
+            </label><br><br>
+
+            <label>
+                District :
+                <input type="text" id="district" formControlName="district" (input)="onchange2($event)">
+                <span *ngIf="districterror">
+                    <p>required...</p><br>
+                </span>
+            </label><br><br>
+
+            <label>
+                State :
+                <input type="text" id="state" formControlName="state" (input)="onchange3($event)">
+                <span *ngIf="staterror">
+                    <p>required....</p><br>
+                </span>
+            </label><br><br>
+        </div>
+        <p>
+            {{employeeForm.status}}
+        </p>
+
+        <button type="submit" [disabled]="employeeForm.pristine || employeeForm.invalid">submit</button>
+
+
+
+    </form>
+</div>
