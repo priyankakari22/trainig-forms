@@ -13,5 +13,18 @@ p{
 .a{
     background-color: antiquewhite;
    width:500px;
+   padding: 20px
    // padding:10px 10px 10px 10px
 }
+.t{
+  table, th, td {
+    border: 1px solid black;
+    margin-left: auto;
+   
+      height: auto;
+      width: auto;
+      background-color: powderblue;
+    
+    }
+    
+  }

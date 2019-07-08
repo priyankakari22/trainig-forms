@@ -5,11 +5,21 @@
   </h1>
   
   </div>
-  <nav>
+  <!-- <nav>
     <a  routerLink= "/reactiveform" routerLinkActive="active">Reactive Form</a><br>
     <a  routerLink= "/templateform" routerLinkActive="active">TemplateForm</a>
-  </nav>
+  </nav> -->
+<app-form-r (info)="det1=$event"></app-form-r>
+<app-details [mes]="det1" ></app-details>
+  
+  
+  <app-form-t (infot)="det2=$event"></app-form-t>
+  <app-detailst [mes1]="det2"></app-detailst>
+
+
+  
+ 
   
   
 
-<router-outlet></router-outlet>
+<!-- <router-outlet ></router-outlet> -->

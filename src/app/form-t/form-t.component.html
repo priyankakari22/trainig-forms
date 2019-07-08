@@ -106,21 +106,23 @@
       </div>
       <table class="t">
         <tr>
-          <th>Fast Name</th><th>Last Name</th><th>Date of Birth</th><th>Phone Number</th>
-          <th>Personal Mail</th><th>Company Mail</th>
+         <th>S.NO:</th> <th>Fast Name</th><th>Last Name</th><th>Date of Birth</th><th>Phone Number</th>
+          <th>Personal Mail</th><th>Company Mail</th><th>Conformation</th>
         </tr>
       
-        <tr *ngFor="let i of array">
+        <tr *ngFor="let i of array;index as j">
+          <td>{{i.Id|| j+1}}</td>
           <td>{{i.firstName}}</td>
           <td>{{i.lastName}}</td>
           <td>{{i.date}}</td>
           <td>{{i.number}}</td>
           <td>{{i.email}}</td>
           <td>{{i.Cmail}}</td>
+          <td><button type="button" (click)="conform(i)">confirm</button></td>
         </tr>
         </table>
       
     
     
         
-      <router-outlet></router-outlet>
+      

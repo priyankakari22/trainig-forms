@@ -5,7 +5,12 @@ import { FormsModule }   from '@angular/forms';
 import { AppRoutingModule,routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormtService } from './formt.service';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { FormRService } from './form-r.service';
+import { DetailsComponent } from './details/details.component';
+import { DetailstComponent } from './detailst/detailst.component';
+import { RouterModule, Routes } from '@angular/router';
+
 
 
 
@@ -13,19 +18,21 @@ import { HttpClientModule } from '@angular/common/http'
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents
+    routingComponents,
+    DetailsComponent,
+    DetailstComponent,
     
     
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    // AppRoutingModule,
     ReactiveFormsModule,
     FormsModule ,
-    HttpClientModule
+    HttpClientModule,
     
   ],
-  providers: [FormtService],
+  providers: [FormtService,FormRService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
